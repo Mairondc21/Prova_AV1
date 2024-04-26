@@ -30,6 +30,12 @@ public class NewsService {
         }else{
             dadosNews = "Falha ao obter dados. Código de status: " + responseEntity.getStatusCode();
         }
+
+        NewsEntity newsEntity = new NewsEntity();
+        newsEntity.setNoticias(dadosNews);
+
+        inserir(newsEntity);
+
         return dadosNews;
     }
 
@@ -37,7 +43,15 @@ public class NewsService {
         return newsRepository.save(user);
     }
 
-    public String consultarNoticiasERealese(){
+    public String consultarNoticiasERealeses(){
         return news("https://servicodados.ibge.gov.br/api/v3/noticias");
+    }
+
+    public String consultarNoticias (){
+        return news("https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia");
+    }
+
+    public String consultarReleases(){
+        return news("https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release");
     }
 }
