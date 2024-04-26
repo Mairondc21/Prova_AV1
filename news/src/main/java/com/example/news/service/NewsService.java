@@ -37,7 +37,15 @@ public class NewsService {
         return newsRepository.save(user);
     }
 
-    public String consultarNoticiasERealese(){
+    public String consultarNoticiasERealeses(){
         return news("https://servicodados.ibge.gov.br/api/v3/noticias");
+    }
+
+    public String consultarNoticias (){
+        return news("https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia");
+    }
+
+    public String consultarReleases(){
+        return news("https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release");
     }
 }

@@ -10,15 +10,22 @@ import org.springframework.web.bind.annotation.*;
 public class NewsController {
     @Autowired
     private NewsService newsService;
-    @GetMapping
-    private String news(){
-        return newsService.news();
-    }
     @PostMapping
     public NewsEntity inserir (@RequestBody NewsEntity user) {return newsService.inserir(user);}
 
+    @GetMapping("/noticiasereleases")
+    public String consultarNoticiasERealese(){
+        return newsService.consultarNoticiasERealeses();
+    }
 
-
+    @GetMapping("/noticias")
+    public String consultarNoticias(){
+        return newsService.consultarNoticias();
+    }
+    @GetMapping("releases")
+    public String cconsultarReleases(){
+        return newsService.consultarReleases();
+    }
 
 
 }
